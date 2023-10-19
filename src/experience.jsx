@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './forms.css'
 
 export default function ExperienceForm({ expData, addExpData, onRemove }) {
   const [isEditing, setIsEditing] = useState(true);
@@ -24,55 +25,73 @@ export default function ExperienceForm({ expData, addExpData, onRemove }) {
     <div className="expform" key={expData.id}>
       {isEditing ? (
         <form>
-          <input
-            id="position"
-            type="text"
-            placeholder="Position"
-            value={expData.position}
-            onChange={handleChange}
-          />
-          <input
-            id="company"
-            type="text"
-            placeholder="Company"
-            value={expData.company}
-            onChange={handleChange}
-          />
-          <input
-            id="city"
-            type="text"
-            placeholder="City"
-            value={expData.city}
-            onChange={handleChange}
-          />
-          <input
-            id="country"
-            type="text"
-            placeholder="Country"
-            value={expData.country}
-            onChange={handleChange}
-          />
-          <input
-            id="startDate"
-            type="text"
-            placeholder="Start Date"
-            value={expData.startDate}
-            onChange={handleChange}
-          />
-          <input
-            id="endDate"
-            type="text"
-            placeholder="End Date"
-            value={expData.endDate}
-            onChange={handleChange}
-          />
-          <input
-            id="description"
-            type="text"
-            placeholder="Description"
-            value={expData.description}
-            onChange={handleChange}
-          />
+          <label> Company Name:
+            <input
+              id="company"
+              type="text"
+              placeholder="Company"
+              value={expData.company}
+              onChange={handleChange}
+            />
+          </label>
+          <label> City:
+            <input
+              id="city"
+              type="text"
+              placeholder="City"
+              value={expData.city}
+              onChange={handleChange}
+            />
+          </label>
+          <label> Country:
+            <input
+              id="country"
+              type="text"
+              placeholder="Country"
+              value={expData.country}
+              onChange={handleChange}
+            />
+          </label>
+          <div className='dates'>
+            <label> Start Date:
+              <input
+                id="startDate"
+                type="text"
+                placeholder="MMM YYYY (ex: Mar 2016)"
+                maxLength={8}
+                value={expData.startDate}
+                onChange={handleChange}
+              />
+            </label>
+            <label> End Date:
+              <input
+                id="endDate"
+                type="text"
+                placeholder="MMM YYYY (ex: Dec 2019)"
+                maxLength={8}
+                value={expData.endDate}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+          <label> Position:
+            <input
+              id="position"
+              type="text"
+              placeholder="Position"
+              value={expData.position}
+              onChange={handleChange}
+            />
+          </label>
+          <label> Roles and Responsibilities:
+            <textarea
+              id="description"
+              type="text"
+              placeholder="Description"
+              value={expData.description}
+              onChange={handleChange}
+            />
+          </label>
         </form>
       ) : (
         <>
@@ -82,16 +101,17 @@ export default function ExperienceForm({ expData, addExpData, onRemove }) {
           <div>Country: {expData.country}</div>
           <div>Start Date: {expData.startDate}</div>
           <div>End Date: {expData.endDate}</div>
-          <div>Description: {expData.description}</div>
+          <div>R&R: {expData.description}</div>
         </>
       )}
 
-      <button type="button" onClick={isEditing ? handleSave : handleEdit}>
-        {isEditing ? 'Save' : 'Edit'}
-      </button>
-      <button type="button" onClick={handleDelete}>
-        Delete
-      </button>
+      
+      <div className='btnctn'>
+        <button className='savebtn' type="button" onClick={isEditing ? handleSave : handleEdit}>
+          {isEditing ? 'Save' : 'Edit'}
+        </button>
+        <object className='trashicon' data='./trash.png' type="image/png" onClick={handleDelete} aria-label="Trash Icon"></object>
+      </div>
     </div>
   );
 }

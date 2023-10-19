@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './forms.css'
 
 export default function SkillsForm({ skillData, addSkillData, onRemove }) {
   const [isEditing, setIsEditing] = useState(true);
@@ -24,24 +25,26 @@ export default function SkillsForm({ skillData, addSkillData, onRemove }) {
     <div className="skillsform" key={skillData.id}>
       {isEditing ? (
         <form>
-          <input
-            id="skill"
-            type="text"
-            placeholder="skill"
-            value={skillData.skill}
-            onChange={handleChange}
-          />
+          <label> Skill:
+            <input
+              id="skill"
+              type="text"
+              placeholder="skill"
+              value={skillData.skill}
+              onChange={handleChange}
+            />
+          </label>
         </form>
       ) : (
         <div>Skill: {skillData.skill}</div>
       )}
 
-      <button type="button" onClick={isEditing ? handleSave : handleEdit}>
-        {isEditing ? 'Save' : 'Edit'}
-      </button>
-      <button type="button" onClick={handleDelete}>
-        Delete
-      </button>
+      <div className='btnctn'>
+        <button className='savebtn' type="button" onClick={isEditing ? handleSave : handleEdit}>
+          {isEditing ? 'Save' : 'Edit'}
+        </button>
+        <object className='trashicon' data='./trash.png' type="image/png" onClick={handleDelete} aria-label="Trash Icon"></object>
+      </div>
     </div>
   );
 }
