@@ -9,8 +9,7 @@ import ContactForm from './contact'
 
 export default function App() {
   const [generalData, setGeneralData] = useState({
-    firstname: '',
-    lastname: '',
+    fullname: '',
     position: '',
     summary: '',
   });
@@ -77,10 +76,20 @@ export default function App() {
     setSkillsData({ skill: '' });
   }
 
+  const print = () => {
+    window.print();
+  };
+
   return (
     <div className='masterctn'>
       <div className="formctn">
-      <h1>Data Input</h1>
+        <div className='topheader'>
+          <h1 className='name'>CV Builder</h1>
+          <div className='headericons'>
+            {/* <object className='pdficon' data='./pdf.png' type="image/png" onClick={downloadpdf}></object> */}
+            <object className='printicon' data='./print.png' type="image/png" onClick={print} ></object>
+          </div>
+        </div>
         <div className='section'>
           <div className="heading">
             <div className='title'>
@@ -191,79 +200,81 @@ export default function App() {
       
 
       <div className="previewctn">
-        <div className='header'>
-          <div className='fullname'>{generalData.firstname} {generalData.lastname}</div>
-          <div className='position'>{generalData.position}</div>
-        </div>
-
-        <div className='maincontent'>
-          <div className='leftside'>
-            <div className='summary'>
-              <div className='sectionlabel'>Summary</div>
-              <div className='summaryblurb'>{generalData.summary}</div>
-            </div>
-          
-            <div className='experience'>
-              <div className='sectionlabel'>Experience</div>
-              {expDataList.map((expEntry) => (
-                <div className='jobblurb' key={expEntry.id}>
-                  <div className='companyinfo'>
-                    <div className='company'>{expEntry.company}</div>
-                    <div className='joblocation'>{expEntry.city}, {expEntry.country} </div>
-                    <div className='jobdates'>{expEntry.startDate} - {expEntry.endDate}</div>
-                  </div>
-                  <div className='jobinfo'>
-                    <div className='jobposition'>{expEntry.position}</div>
-                    <div className='description'>{expEntry.description}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+        <div className='printdata'>
+          <div className='header'>
+            <div className='fullname'>{generalData.fullname}</div>
+            <div className='position'>{generalData.position}</div>
           </div>
 
-          <div className='rightside'>
-            <div className='education'>
-              <div className='sectionlabel'>Education</div>
-              {eduDataList.map((eduEntry) => (
-                <div key={eduEntry.id}>
-                  <div>School: {eduEntry.school}</div>
-                  <div>Degree: {eduEntry.degree}</div>
-                  <div>City: {eduEntry.city}</div>
-                  <div>Country: {eduEntry.country}</div>
-                  <div>Start Year: {eduEntry.startYear}</div>
-                  <div>End Year: {eduEntry.endYear}</div>
-                </div>
-              ))}
-            </div>
-
-            <div className='skills'>
-              <div className='sectionlabel'>Skills</div>
-              <ul>
-                {skillsDataList.map((skillEntry) => (
-                  <li key={skillEntry.id}>{skillEntry.skill}</li>
+          <div className='maincontent'>
+            <div className='leftside'>
+              <div className='summary'>
+                <div className='sectionlabel'>SUMMARY</div>
+                <div className='summaryblurb'>{generalData.summary}</div>
+              </div>
+            
+              <div className='experience'>
+                <div className='sectionlabel'>EXPERIENCE</div>
+                {expDataList.map((expEntry) => (
+                  <div className='jobblurb' key={expEntry.id}>
+                    <div className='companyinfo'>
+                      <div className='company'>{expEntry.company}</div>
+                      <div className='joblocation'>{expEntry.city}, {expEntry.country} </div>
+                      <div className='jobdates'>{expEntry.startDate} - {expEntry.endDate}</div>
+                    </div>
+                    <div className='jobinfo'>
+                      <div className='jobposition'>{expEntry.position}</div>
+                      <div className='description'>{expEntry.description}</div>
+                    </div>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
 
-    
-            <div className='contactinfo'>
-              <div className='sectionlabel'>Contact</div>
-                <div className='contactblurb'>
-                  <object className='contacticon' data='./location.png' type="image/png" aria-label="Location Icon"></object>
-                  <div className='address'>{contactData.address}</div>
-                </div>
-                <div className='contactblurb'>
-                  <object className='contacticon' data='./phone.png' type="image/png" aria-label="Phone Icon"></object>
-                  <div className='number'>{contactData.phonenumber}</div>
-                </div>
-                <div className='contactblurb'>
-                  <object className='contacticon' data='./email.png' type="image/png" aria-label="Email Icon"></object>
-                  <div className='email'>{contactData.email}</div>
-                </div>
-                <div className='contactblurb'>
-                  <object className='contacticon' data='./www.png' type="image/png" aria-label="Website Icon"></object>
-                  <div className='site'>{contactData.site}</div>
-                </div>
+            <div className='rightside'>
+              <div className='education'>
+                <div className='sectionlabel'>EDUCATION</div>
+                {eduDataList.map((eduEntry) => (
+                  <div key={eduEntry.id}>
+                    <div className='eduinfo'>
+                      <div className='schoolname'>{eduEntry.school}</div>
+                      <div className='degree'>{eduEntry.degree}</div>
+                      <div className='eduyears'>{eduEntry.startYear} - {eduEntry.endYear}</div>
+                      <div className='edulocation'>{eduEntry.city}, {eduEntry.country}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className='skillsection'>
+                <div className='sectionlabel'>SKILLS</div>
+                <ul>
+                  {skillsDataList.map((skillEntry) => (
+                    <li className='skill' key={skillEntry.id}>{skillEntry.skill}</li>
+                  ))}
+                </ul>
+              </div>
+
+      
+              <div className='contactinfo'>
+                <div className='sectionlabel'>CONTACT</div>
+                  <div className='contactblurb'>
+                    <object className='contacticon' data='./location.png' type="image/png" aria-label="Location Icon"></object>
+                    <div className='address'>{contactData.address}</div>
+                  </div>
+                  <div className='contactblurb'>
+                    <object className='contacticon' data='./phone.png' type="image/png" aria-label="Phone Icon"></object>
+                    <div className='number'>{contactData.phonenumber}</div>
+                  </div>
+                  <div className='contactblurb'>
+                    <object className='contacticon' data='./email.png' type="image/png" aria-label="Email Icon"></object>
+                    <div className='email'>{contactData.email}</div>
+                  </div>
+                  <div className='contactblurb'>
+                    <object className='contacticon' data='./www.png' type="image/png" aria-label="Website Icon"></object>
+                    <div className='site'>{contactData.site}</div>
+                  </div>
+              </div>
             </div>
           </div>
         </div>

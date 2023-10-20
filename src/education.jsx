@@ -85,18 +85,20 @@ export default function EducationForm({ eduData, addEduData, onRemove }) {
           </div>
         </form>
       ) : (
-        <>
+        <div className='formdata'>
           <div>School: {eduData.school}</div>
           <div>Degree: {eduData.degree}</div>
           <div>City: {eduData.city}</div>
           <div>Country: {eduData.country}</div>
-          <div>Start Year: {eduData.startYear}</div>
-          <div>Graduation Year: {eduData.endYear}</div>
-        </>
+          <div className='dates'>
+            <div>Start Year: {eduData.startYear}</div>
+            <div>Graduation Year: {eduData.endYear}</div>
+          </div>
+        </div>
       )}
 
       <div className='btnctn'>
-        <button className='savebtn' type="button" onClick={isEditing ? handleSave : handleEdit}>
+        <button className={isEditing ? 'savebtn' : 'editbtn'} type="button" onClick={isEditing ? handleSave : handleEdit}>
           {isEditing ? 'Save' : 'Edit'}
         </button>
         <object className='trashicon' data='./trash.png' type="image/png" onClick={handleDelete} aria-label="Trash Icon"></object>

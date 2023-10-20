@@ -59,15 +59,15 @@ export default function ContactForm({ contactData, addContactData }) {
           </label>
         </form>
       ) : (
-        <>
+        <div className='formdata'>
           <div>Address: {contactData.address}</div>
           <div>Phone Number: {contactData.phonenumber}</div>
           <div>Email: {contactData.email}</div>
           <div>Website: {contactData.site}</div>
-        </>
+        </div>
       )}
 
-      <button className='savebtn' type="button" onClick={isEditing ? handleSave : handleEdit}>
+      <button className={isEditing ? 'savebtn' : 'editbtn'} type="button" onClick={isEditing ? handleSave : handleEdit}>
         {isEditing ? 'Save' : 'Edit'}
       </button>
     </div>

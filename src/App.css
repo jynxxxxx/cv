@@ -1,5 +1,7 @@
 :root{
-  background-color: lightgrey;
+  background-color: #f1f7f6;
+  margin: 0 32px;
+  --bodypadding: 12px;
 }
 
 .masterctn{
@@ -8,10 +10,37 @@
   gap: 64px;
 }
 
+.printicon{
+  position: fixed;
+  bottom: 48px;
+  left: 64px;
+  padding: 24px;
+  background-color: white;
+  border: lightgray 2px solid;
+  border-radius: 24px;
+  height: 40px;
+}
+
+.printicon:hover{
+  transform: scale(1.1);
+}
+
+.name{
+  margin-left: 64px;
+  font-size: 50px;
+}
+
 .formctn{
-  max-width: 700px;
+  max-width: 600px;
   width: 100%;
   justify-self: end;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+}
+
+textarea{
+  min-height: 5em;
+  font-family: 'Inter', sans-serif;
 }
 
 .section{
@@ -21,6 +50,7 @@
   border-radius: 8px;
   background-color: white;
   margin: 16px 0;
+  box-shadow: 10px 10px 20px 0px lightgrey;
 }
 
 .heading{
@@ -30,7 +60,7 @@
 }
 
 .title{
-  font-size: 25px;
+  font-size: 23px;
   font-weight: bolder;
   display: flex; 
   align-items: center;
@@ -42,12 +72,35 @@
   height: 30px;
 }
 
+.formdata{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.description{
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding-left: 6px;
+}
+
 .previewctn{
+  box-shadow: 10px 10px 20px 0px #e0e0e0;
+  padding-top: 32px;
+  font-family: 'Noto Sans', sans-serif;
+  height: fit-content;
+  width: fit-content;
+  box-sizing: border-box;
+}
+
+.printdata{
   display: grid;
-  grid-template-rows: 150px 1fr;
+  grid-template-rows: 175px 1fr;
+  width: 21cm;
+  height: 29.7cm;
   background-color: white;
-  width: 800px;
-  height: 1100px;
 }
 
 .header{
@@ -67,15 +120,13 @@
 }
 
 .position{
-  font-size: 35px;
-  font-weight: bold;
-  letter-spacing: .2rem;
+  font-size: 30px;
   color: rgb(216, 216, 216);
 }
 
 .maincontent{
   display: grid;
-  grid-template-columns: 466px 286px;
+  grid-template-columns: 470px 282px;
   justify-content: center;
   padding: 24px 16px;
 }
@@ -100,57 +151,110 @@
   font-weight: 600px;
   border-top: black solid 2px;
   border-bottom: black solid 2px;
+  padding: 2px 6px;
+  margin-bottom: 10px;
 }
 
 .summary{
-  min-height: 50px;
+  min-height: 75px;
+}
+
+.summaryblurb{
+  padding-left: var(--bodypadding);
 }
 
 .jobblurb{
   display: grid;
   grid-template-columns: 150px 1fr;
   height: fit-content;
-  margin-top: 16px;
 }
 
 .companyinfo{
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  font-size: 15px;
+  border-right: 1px lightgrey solid;
+  border-bottom: 1px lightgrey solid;
+  padding: 12px 6px 12px var(--bodypadding);
+}
+
+.joblocation, .jobdates{
+  padding-left: 2px;
+  letter-spacing: -.5px;
 }
 
 .company{
-  font-weight: bold;
-  font-size: 17px;
+  font-weight: 550;
+  margin-bottom: 4px;
 }
 
 .jobinfo{
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  font-size: 15px;
+  border-bottom: 1px lightgrey solid;
+  padding: 12px 0 12px 8px;
+  
 }
 
 .jobposition{
   font-weight: bold;
-  font-size: 17px;
+  margin-bottom: 4px;
 }
 
-.description{
-  width: 100%;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+.eduinfo{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  padding: 0 0 12px var(--bodypadding);;
+}
+
+.schoolname{
+  font-weight: 600;
+  grid-column: 1/3;
+  height: fit-content;
+}
+
+.degree{
+  grid-column: 1/2;
+  grid-row:2/3 ;
+}
+
+.eduyears{
+  grid-row: 2/3;
+  justify-self: right;
+  padding-right: 4px;
+}
+
+.edulocation{
+  grid-column: 1/3;
+  grid-row: 3/4;
+}
+
+.skillsection ul{
+  list-style-type: none; 
+  list-style-position: inside;
+  margin: 0;
+  padding-left: var(--bodypadding);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.skill{
+  background-color: lightgray;
+  border: lightgray 1px solid;
+  border-radius: 8px;
+  text-align: center;
 }
 
 .contactblurb{
   display: flex;
   align-items: center;
   gap: 4px;
-  margin: 8px 0;
+  margin: 16px 0;
+  padding-left: var(--bodypadding);
 }
 
-.input{
+ul{
   appearance: none;
   list-style-type: none; 
   list-style-position: inside;
@@ -172,4 +276,43 @@
   border-radius: 4px;
   outline: none;
   padding: 4px 8px;
+}
+
+input:focus {
+  border: lightblue 2px solid;
+  outline: grey 2px solid;
+}
+
+button:hover, .trashicon:hover{
+  transform: scale(1.1);
+}
+
+@media print {
+  .formctn {
+    display: none;
+  }
+
+  html, body, :root{
+    margin: 0; 
+    padding: 0;
+  }
+
+  .previewctn{
+    background-color: white;
+    margin: 0; 
+    padding: 0;
+    height: 0;
+    width: 0;
+  }
+
+  @page {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .printdata {
+    visibility: visible;
+    margin: 0;
+    padding: 0;
+  }
 }

@@ -21,21 +21,12 @@ export default function GeneralInfoForm({ generalData, addGeneralData }) {
     <div className="generalform">
       {isEditing ? (
         <form>
-          <label> First Name:
+          <label> Full Name:
             <input
-              id="firstname"
+              id="fullname"
               type="text"
-              placeholder="First Name"
-              value={generalData.firstname}
-              onChange={handleChange}
-            />
-          </label>
-          <label> Last Name:
-            <input
-              id="lastname"
-              type="text"
-              placeholder="Last Name"
-              value={generalData.lastname}
+              placeholder="Full Name"
+              value={generalData.fullname}
               onChange={handleChange}
             />
           </label>
@@ -43,7 +34,7 @@ export default function GeneralInfoForm({ generalData, addGeneralData }) {
             <input
               id="position"
               type="text"
-              placeholder="Position"
+              placeholder="Title"
               value={generalData.position}
               onChange={handleChange}
             />
@@ -51,22 +42,21 @@ export default function GeneralInfoForm({ generalData, addGeneralData }) {
           <label> Summary:
             <textarea
               id="summary"
-              placeholder="summary"
+              placeholder="Summary"
               value={generalData.summary}
               onChange={handleChange}
             />
           </label>
         </form>
       ) : (
-        <>
-          <div>First Name: {generalData.firstname}</div>
-          <div>Last Name: {generalData.lastname}</div>
-          <div>Position: {generalData.position}</div>
+        <div className='formdata'>
+          <div>Name: {generalData.fullname}</div>
+          <div>Title: {generalData.position}</div>
           <div>Summary: {generalData.summary}</div>
-        </>
+        </div>
       )}
 
-      <button className='savebtn' type="button" onClick={isEditing ? handleSave : handleEdit}>
+      <button className={isEditing ? 'savebtn' : 'editbtn'} type="button" onClick={isEditing ? handleSave : handleEdit}>
         {isEditing ? 'Save' : 'Edit'}
       </button>
     </div>

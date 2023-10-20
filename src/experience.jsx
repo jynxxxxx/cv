@@ -94,20 +94,22 @@ export default function ExperienceForm({ expData, addExpData, onRemove }) {
           </label>
         </form>
       ) : (
-        <>
-          <div>Position: {expData.position}</div>
-          <div>Company: {expData.company}</div>
+        <div className='formdata'>
+          <div>Company: {expData.company}</div>       
           <div>City: {expData.city}</div>
           <div>Country: {expData.country}</div>
-          <div>Start Date: {expData.startDate}</div>
-          <div>End Date: {expData.endDate}</div>
+          <div className='dates'>
+            <div>Start Date: {expData.startDate}</div>
+            <div>End Date: {expData.endDate}</div>
+          </div>
+          <div>Position: {expData.position}</div>
           <div>R&R: {expData.description}</div>
-        </>
+        </div>
       )}
 
       
       <div className='btnctn'>
-        <button className='savebtn' type="button" onClick={isEditing ? handleSave : handleEdit}>
+        <button className={isEditing ? 'savebtn' : 'editbtn'} type="button" onClick={isEditing ? handleSave : handleEdit}>
           {isEditing ? 'Save' : 'Edit'}
         </button>
         <object className='trashicon' data='./trash.png' type="image/png" onClick={handleDelete} aria-label="Trash Icon"></object>

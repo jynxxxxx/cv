@@ -21,26 +21,30 @@ export default function SkillsForm({ skillData, addSkillData, onRemove }) {
     onRemove();
   };
 
+  const preventSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission
+  };
+
   return (
     <div className="skillsform" key={skillData.id}>
       {isEditing ? (
-        <form>
+        <form onSubmit={preventSubmit}>
           <label> Skill:
             <input
               id="skill"
               type="text"
-              placeholder="skill"
+              placeholder="Skill"
               value={skillData.skill}
               onChange={handleChange}
             />
           </label>
         </form>
       ) : (
-        <div>Skill: {skillData.skill}</div>
+        <div>{skillData.skill}</div>
       )}
 
       <div className='btnctn'>
-        <button className='savebtn' type="button" onClick={isEditing ? handleSave : handleEdit}>
+        <button className={isEditing ? 'savebtn' : 'editbtn'} type="button" onClick={isEditing ? handleSave : handleEdit}>
           {isEditing ? 'Save' : 'Edit'}
         </button>
         <object className='trashicon' data='./trash.png' type="image/png" onClick={handleDelete} aria-label="Trash Icon"></object>

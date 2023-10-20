@@ -22,5 +22,7 @@ Icons from flaticon
 <a href="https://www.flaticon.com/free-icons/ui" title="ui icons">Ui icons created by kliwir art - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/plus-button" title="plus button icons">Plus button icons created by Syahrul Hidayatullah - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/contact" title="contact icons">Contact icons created by pojok d - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/print" title="print icons">Print icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/pdf" title="pdf icons">Pdf icons created by Freepik - Flaticon</a>
 
 
